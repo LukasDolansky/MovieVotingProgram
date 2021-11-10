@@ -7,7 +7,7 @@ Github is used as the collaborative remote repo to share changes across develope
 Heroku is used as a hosting service to make API publicly accessible.
 You will need to use a terminal to access Heroku's functions and to manipulate the multiple git repos.
 Adding and committing files is the same, but you will need to specify which remote repo to push to:
-[ git push heroku ] (or) [ git push main ]
+[ git push heroku ] (or) [ git push origin ]
 
 Note:
 Cloning this repo only retains the remote repo from the source of the clone.

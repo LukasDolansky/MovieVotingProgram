@@ -1,4 +1,6 @@
 /* I pretty much just copied this from the REST with Express tutorial */
+// @ts-check
+
 /* Importing modules */
 var express = require("express");
 var bodyParser = require("body-parser");
