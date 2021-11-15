@@ -7,12 +7,12 @@ var appRouter = function (app) {
   });
   //Index page of site
   app.get('/home',function(req,res){
-    res.sendFile(path.join(__dirname+'../public/index.html'));
+    res.sendFile(path.join(__dirname+'/../public/index.html'));
     //__dirname : It will resolve to your project folder.
   });
   //Testing url navigation
   app.get('/newpage',function(req,res){
-    res.sendFile(path.join(__dirname+'../public/newpage.html'));
+    res.sendFile(path.join(__dirname+'/../public/newpage.html'));
     //__dirname : It will resolve to your project folder.
   });
   app.get("/API", function(req, res) {
