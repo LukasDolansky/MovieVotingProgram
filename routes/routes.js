@@ -1,7 +1,8 @@
 const { response } = require('express');
 const request = require("request");
 var path = require('path');
-const fetch = () => import('node-fetch').then(({default: fetch}) => fetch());
+//Must be node-fetch v2
+var fetch = require('node-fetch');
 var appRouter = function (app) {
 
   //Redirect to /home
@@ -18,11 +19,13 @@ var appRouter = function (app) {
     res.sendFile(path.join(__dirname+'/../public/newpage.html'));
     //__dirname : It will resolve to your project folder.
   });
+  
+  //TODO: Fix this shit
   app.get("/api", async function(req, res) {
-    let api_url = `https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a`
-    const response = await fetch('https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a');
-    const json = await response.json();
-    console.log(response);
+    let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a"
+    const response = await fetch(api_url);
+    let json = response.json();
+    console.log(json);
   });
 
   }
