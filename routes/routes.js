@@ -20,14 +20,17 @@ var appRouter = function (app) {
     //__dirname : It will resolve to your project folder.
   });
 
+  //Testing API call - please help
+  //TODO: Figure out how to manipulate data
+  //TODO: Make code cleaner - understand syntax better
   app.get("/api", async function(req, res) {
-    let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a";
-    let json = null;
-    const response = await fetch(api_url)
-      .then((response) => json = response.json())
-      .catch((err) => console.log(err));
-    console.log(json);
-    res.json(response);
+    let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a";    //May want to store API key in hidden file for security
+    let json = null;                                                                                    //Not sure why this variable is even used
+    const response = await fetch(api_url)                                                               //The glorious fetch()
+      .then((response) => json = response.json())                                                       //Parse result into json (probably not needed)
+      .catch((err) => console.log(err));                                                                //Output error if one occurs
+    console.log(json);                                                                                  //Output json data to console (probably not needed)
+    res.json(response);                                                                                 //Response of this API call
   });
 
   }
