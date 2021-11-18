@@ -1,45 +1,32 @@
 <!doctype html>
-
 <html>
+
 <head>
-  <link href="style.css" rel="stylesheet" type="text/css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="script.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <h1 id="title"> Movie Voting System </h1>
-    <img src="Communist Banner.jpg" id="title-banner">
-	<h3>Search Categories</h3>
-  </header>
-  
-  <main>
-    <form action="results.html">
-  		<label for="gsearch"></label>
-  		<input type="search" id="gsearch" name="gsearch" list="categories" required>
-  		<datalist id="categories">
-  		  <option value="best picture"/>
-  		  <option value="best screenplay"/>
-  		  <option value="International Feature Film"/>
-  		</datalist>
-  		<input type="submit" id="submit-button">
-	</form>
-	<button>
-	click</button>
-	<p id="demo"></p>
-  </main>
-	
-	
-	<script>
-	    $("button").click(function(){
-		  $.get("https://api.publicapis.org/entries", function(data, status){
-		    alert("Data: " + data + "\nStatus: " + status);
-		    document.getElementById("demo").innerHTML = data;
-		  });
-		}); 
-		function movePage(){
-			location.replace("another.html")
-		}
-	
-	</script>
+	<header>
+		<h1 id="title"> Movie Voting System </h1>
+		<img src="Communist Banner.jpg" id="title-banner">
+		<h3>Search Categories</h3>
+	</header>
+
+	<main>
+		<form action="results.html">
+			<label for="gsearch"></label>
+			<input type="search" id="gsearch" name="gsearch" list="categories" required>
+			<datalist id="categories">
+				<option value="best picture" />
+				<option value="best screenplay" />
+				<option value="International Feature Film" />
+			</datalist>
+		</form>
+		<input type="submit" id="submit-button">
+		<button>click</button>
+	</main>
 
 </body>
+
 </html>
