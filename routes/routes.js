@@ -20,7 +20,7 @@ var appRouter = function (app) {
     //__dirname : It will resolve to your project folder.
   });
 
-  //Testing API call - please help
+  //Testing API call
   //TODO: Figure out how to manipulate data
   //TODO: Make code cleaner - understand syntax better
   app.get("/api", async function(req, res) {
@@ -32,7 +32,6 @@ var appRouter = function (app) {
     console.log(json);                                                                                  //Output json data to console (probably not needed)
     res.json(response);                                                                                 //Response of this API call
   });
-
   }
   
   module.exports = appRouter;
