@@ -5,6 +5,7 @@ var path = require('path');
 var fetch = require('node-fetch');
 var appRouter = function (app) {
 
+  
   //Redirect to /home
   app.get('/',function(req,res){
     res.redirect('/home');
