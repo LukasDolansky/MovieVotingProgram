@@ -1,9 +1,13 @@
 /* I pretty much just copied this from the REST with Express tutorial */
+// @ts-check
+
 /* Importing modules */
 var express = require("express");
 var bodyParser = require("body-parser");
 var routes = require("./routes/routes.js");
 var app = express();
+var path = require("path");
+var router = express.Router();
 /*Setting default port if hosting service cannot provide one */
 var PORT = process.env.PORT || 3000;
 
@@ -18,47 +22,6 @@ routes(app);
 var server = app.listen(PORT, function () {
     console.log("app running on port.", PORT);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //const express = require('express');
 //const app = express();
