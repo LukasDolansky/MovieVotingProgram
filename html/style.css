@@ -1,30 +1,54 @@
+@import url("homepage.css");
+
 * {
-	color: yellow;
-	text-align: center;
-}
-#title {
-	z-index: 1;
-	font-family: "Courier New"
-}
-#title-banner {
-	position: relative;
-	z-index: 0;
-	width: 700px;
-	height: 288px;
-}
-#gsearch {
-	width: 1000px;
-	color: black;
-}
-body {
-	background-color: red;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-#submit-button {
-	color: black;
-	font-family: "Courier New";
+.navbar {
+  background: black;
+  font-size: 2.5rem;
+  position: sticky;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  width: 90%;
+
+  height: 100px;
 }
-h3 {
-	font-size: 20px;
-	font-family: "Courier New"
+
+.navbar__container {
+  width: 100%;
+  display: flex;
+  height: 80px;
+  z-index: 1;
+  margin: 0 auto;
+  padding: 0 50px;
+  max-width: 1720px;
+  background-color: black;
+}
+
+#navbar__logo {
+  font-family: "Montserrat", sans-serif;
+
+  justify-self: start;
+  font-size: 3.5rem;
+  background-color: black;
+  background-image: linear-gradient(to top, #ce8526e8 20%, white 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#navbar__logo {
+  cursor: pointer;
 }

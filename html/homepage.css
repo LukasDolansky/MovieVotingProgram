@@ -1,0 +1,50 @@
+/*
+THIS IS EVERYTHING BELOW THE NAVBAR
+*/
+*main {
+  background: black;
+}
+
+.main-container {
+  display: grid;
+  align-items: center;
+  justify-self: center;
+  width: 80%;
+  margin: 0 auto;
+  height: 90vh;
+  background-color: black;
+}
+
+.main-content {
+  justify-self: center;
+  margin-left: 10px;
+  color: white;
+  width: 80%;
+}
+
+.main #title {
+  z-index: 1;
+  font-family: "Courier New";
+}
+#title-banner {
+  position: relative;
+  z-index: 0;
+  width: 700px;
+  height: 288px;
+}
+#gsearch {
+  width: 1000px;
+  color: gold;
+}
+body {
+  background-color: black;
+}
+
+#submit-button {
+  color: black;
+  font-family: "Courier New";
+}
+h1 {
+  font-size: 20px;
+  font-family: "Courier New";
+}
