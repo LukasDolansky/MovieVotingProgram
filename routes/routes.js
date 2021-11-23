@@ -3,10 +3,10 @@ const request = require("request");
 var path = require('path');
 //Must be node-fetch v2
 var fetch = require('node-fetch');
+var htmlData = __dirname + '/../html/'
 var appRouter = function (app) {
 
-  app.use(express.static('html'))
-
+  app.use(express.static('html'));
 
   //Redirect to /home
   app.get('/',function(req,res){
@@ -14,12 +14,12 @@ var appRouter = function (app) {
   });
   //Index page of site
   app.get('/home',function(req,res){
-    res.sendFile(path.join(__dirname+'/../html/index.html'));
+    res.sendFile(path.join(htmlData + 'index.html'));
     //__dirname : It will resolve to your project folder.
   });
   //Testing url navigation
-  app.get('/newpage',function(req,res){
-    res.sendFile(path.join(__dirname+'/../public/newpage.html'));
+  app.get('/results',function(req,res){
+    res.sendFile(path.join(htmlData + 'results.html'));
     //__dirname : It will resolve to your project folder.
   });
 
