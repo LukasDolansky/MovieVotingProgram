@@ -7,13 +7,20 @@
 </head>
 
 <body>
+
+	<!-- This header. It contains a title that says "movie voting system", a banner using "communist Banner.jpg" 
+		and another title called "search categories" -->
 	<header>
 		<h1 id="title"> Movie Voting System </h1>
 		<img src="Communist Banner.jpg" id="title-banner">
 		<h3>Search Categories</h3>
 	</header>
 
+	<!-- This this the main items of the website-->
 	<main>
+		<!-- This is a form that holds the items needed to collect input from user. The input is a search bar and is connected to the datalist below
+		it. The data list has options the website can look at and give autofill suggestion based on the list of options-->
+
 		<form action="results.html">
 			<label for="gsearch"></label>
 			<input type="search" id="gsearch" name="gsearch" list="categories" required>
@@ -23,6 +30,7 @@
 				<option value="International Feature Film" />
 			</datalist>
 		</form>
+		<!-- these are two buttons. one submits data to results page. THe other button does nothing I think-->
 		<input type="submit" id="submit-button">
 		<button>click</button>
 	</main>
