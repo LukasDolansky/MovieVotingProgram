@@ -3,24 +3,25 @@ const request = require("request");
 var path = require('path');
 //Must be node-fetch v2
 var fetch = require('node-fetch');
+var htmlData = __dirname + '/../html/';   //__dirname : It will resolve to your project folder.
+
+//This will handle changes to the url.
 var appRouter = function (app) {
 
-  app.use(express.static('html'))
+  //Not sure exactly what this does but it makes CSS work
+  app.use(express.static('html'));
 
+  app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
+    res.redirect('/home');              // Note how you don't need to show the desired file, just change the url
+  });
 
-  //Redirect to /home
-  app.get('/',function(req,res){
-    res.redirect('/home');
-  });
-  //Index page of site
-  app.get('/home',function(req,res){
-    res.sendFile(path.join(__dirname+'/../html/index.html'));
-    //__dirname : It will resolve to your project folder.
-  });
-  //Testing url navigation
-  app.get('/newpage',function(req,res){
-    res.sendFile(path.join(__dirname+'/../public/newpage.html'));
-    //__dirname : It will resolve to your project folder.
+  app.get('/home',function(req,res){                    // Use this syntax for showing an html file as a web page.      
+    res.sendFile(path.join(htmlData + 'index.html'));     // Note that all you need to change is the first argument of the .get()
+  });                                                     // and the last argument of the .join()
+
+  app.get('/results',function(req,res){
+    res.sendFile(path.join(htmlData + 'results.html'));
+    
   });
 
   //Testing API call
