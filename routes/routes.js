@@ -8,11 +8,8 @@ var htmlData = __dirname + '/../html/';   //__dirname : It will resolve to your 
 //This will handle changes to the url.
 var appRouter = function (app) {
 
-  //Not sure exactly what this does but it makes CSS work
-  app.use(express.static('html'));
-
   app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
-    res.redirect('/home');              // Note how you don't need to show the desired file, just change the url
+    res.redirect('home');              // Note how you don't need to show the desired file, just change the url
   });
 
   app.get('/home',function(req,res){                    // Use this syntax for showing an html file as a web page.      
@@ -36,6 +33,15 @@ var appRouter = function (app) {
     console.log(json);                                                                                  //Output json data to console (probably not needed)
     res.json(data);                                                                                 //Response of this API call
   });
+
+
+
+
+  //Not sure exactly what this does but it makes CSS work
+    //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
+  app.use(express.static('html'));
   }
   
+
+
   module.exports = appRouter;
