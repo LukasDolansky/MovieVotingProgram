@@ -34,14 +34,9 @@ var appRouter = function (app) {
     res.json(data);                                                                                 //Response of this API call
   });
 
-
-
-
   //Not sure exactly what this does but it makes CSS work
     //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
   app.use(express.static('html'));
   }
   
-
-
   module.exports = appRouter;
