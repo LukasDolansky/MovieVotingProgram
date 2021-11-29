@@ -3,7 +3,7 @@ const request = require("request");
 var path = require('path');
 //Must be node-fetch v2
 var fetch = require('node-fetch');
-var htmlData = __dirname + '/../html/';   //__dirname : It will resolve to your project folder.
+var htmlData = __dirname + '/html/';   //__dirname : It will resolve to your project folder.
 
 //This will handle changes to the url.
 var appRouter = function (app) {
