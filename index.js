@@ -4,7 +4,7 @@
 /* Importing modules */
 var express = require("express");
 var bodyParser = require("body-parser");
-var routes = require("./routes/routes.js");
+var server = require("./server.js");
 var app = express();
 var path = require("path");
 var router = express.Router();
@@ -16,11 +16,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Run the routes script */
-routes(app);
+server(app);
 
 /* Output this to the console to show the user what port to connect to if running locally */ 
-var server = app.listen(PORT, function () {
-    console.log("app running on port.", PORT);
+var host = app.listen(PORT, function () {
+    console.log("App running on port: ", PORT);
 });
 
 //const express = require('express');

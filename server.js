@@ -3,7 +3,7 @@ const request = require("request");
 var path = require('path');
 //Must be node-fetch v2
 var fetch = require('node-fetch');
-var htmlData = __dirname + '/../html/';   //__dirname : It will resolve to your project folder.
+var htmlData = __dirname + '/html/';   //__dirname : It will resolve to your project folder.
 
 //This will handle changes to the url.
 var appRouter = function (app) {
@@ -34,14 +34,9 @@ var appRouter = function (app) {
     res.json(data);                                                                                 //Response of this API call
   });
 
-
-
-
   //Not sure exactly what this does but it makes CSS work
     //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
   app.use(express.static('html'));
   }
   
-
-
   module.exports = appRouter;
