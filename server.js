@@ -21,18 +21,36 @@ var appRouter = function (app) {
     
   });
 
-  //Testing API call
-  //TODO: Figure out how to manipulate data
-  //TODO: Make code cleaner - understand syntax better
+  //Testing API call...ask Sebastian for clarification
   app.get("/api", async function(req, res) {
-    let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a";    //May want to store API key in hidden file for security
+    console.log("/API root reached. Redirecting for testing...");
+    res.redirect('/api/search?movieID=550');
+    /* let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a";    //May want to store API key in hidden file for security
     let json = null;                                                                                    //Not sure why this variable is even used
     const data = await fetch(api_url)                                                               //The glorious fetch()
       .then((data) => json = data.json())                                                       //Parse result into json (probably not needed)
       .catch((err) => console.log(err));                                                                //Output error if one occurs
     console.log(json);                                                                                  //Output json data to console (probably not needed)
-    res.json(data);                                                                                 //Response of this API call
+    res.json(data); */                                                                              //Response of this API call
   });
+
+  //Testing API call constructing using parameters...a work in progress
+  app.get("/api/search", async function(req, res) {
+    let base = "https://api.themoviedb.org/3/movie/";    
+    let key = "?api_key=6221e0ed54d6b02887581e40fa35381a"; // '?' needed for the API query syntax
+    let movie = req.query.movieID;
+    let api_url = base + movie+key;
+    let json = null;
+
+    console.log("Attempting API call for movie ID: " + movie);
+    let data = await fetch(api_url)
+      .then((data) => {
+        console.log("success!");
+        return json = data.json();
+      })
+      .catch((err) => console.log(err))
+    res.json(data);
+  })
 
   //Not sure exactly what this does but it makes CSS work
     //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
