@@ -3,6 +3,7 @@ const request = require("request");
 var path = require('path');
 //Must be node-fetch v2
 var fetch = require('node-fetch');
+const oscarData = require('./oscar_data.json');
 var htmlData = __dirname + '/html/';   //__dirname : It will resolve to your project folder.
 
 //This will handle changes to the url.
@@ -35,11 +36,12 @@ var appRouter = function (app) {
   });
 
   //Testing API call constructing using parameters...a work in progress
-  app.get("/api/search", async function(req, res) {
+  app.get("/api/search/movie/:movie", async function(req, res) {
     let base = "https://api.themoviedb.org/3/movie/";    
     let key = "?api_key=6221e0ed54d6b02887581e40fa35381a"; // '?' needed for the API query syntax
-    let movie = req.query.movieID;
-    let api_url = base + movie+key;
+    let movie = req.params.movie;
+    console.log(movie);
+    let api_url = base + movie + key;
     let json = null;
 
     console.log("Attempting API call for movie ID: " + movie);
@@ -50,11 +52,25 @@ var appRouter = function (app) {
       })
       .catch((err) => console.log(err))
     res.json(data);
-  })
+  });
+
+  app.get("/api/search/genre/:genre", getGenreList);
+
+
 
   //Not sure exactly what this does but it makes CSS work
     //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
   app.use(express.static('html'));
   }
   
-  module.exports = appRouter;
+module.exports = appRouter;
+
+async function getGenreList(req, res) {
+    var genre = req.params.genre;
+    var json = null;
+
+    console.log(genre);
+    console.log(oscarData.length);
+    console.log(oscarData[0].category);
+
+}
