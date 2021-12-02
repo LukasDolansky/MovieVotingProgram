@@ -54,7 +54,7 @@ var appRouter = function (app) {
     res.json(data);
   });
 
-  app.get("/api/search/genre/:genre", getGenreList);
+  app.get("/api/search/category/:category", getGenreList);
 
 
 
@@ -66,38 +66,36 @@ var appRouter = function (app) {
 module.exports = appRouter;
 
 async function getGenreList(req, res) {
+    console.log(req);
     const film = "film";
     const name = "name";
     const year = "year_film";
     const winner = "winner";
 
-    var genre = ((req.params.genre).toString()).toUpperCase();
-    var json = null;
+    var category = ((req.params.category).toString()).toUpperCase();
+    var json = {};
 
 
-    console.log("Requested category: " + genre);
+    console.log("Requested category: " + category);
 
-    for(var i = 0; i < oscarData.length; i++) {
-      if(oscarData[i].category == genre) {
-        console.log("Found movie: " + oscarData[i].film);
+    for(var i = (oscarData.length - 1); i >= 0 ; i--) {
+      if(oscarData[i].category == category) {
         var movie = oscarData[i];
         var title = movie.film;
         var nomineeName = movie.name;
-        var releaseYear = movie.year;
+        var releaseYear = movie.year_film;
         var awardCategory = movie.category;
         var awardWinner = movie.winner;
-
-        var movieJSON = 
+        console.log("Adding movie: " + title);
+        json[title] = 
           {
-              "year": releaseYear,
-              "name": nomineeName,
-              "category": awardCategory,
-              "winner": awardWinner
+            "title": title,
+            "year": releaseYear,
+            "name": nomineeName,
+            "category": awardCategory,
+            "winner": awardWinner
           };
-        console.log(movieJSON);
-        json.title = movieJSON;
       }
     }
-    //console.log(json);
     res.json(json);
 }
