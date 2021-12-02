@@ -66,11 +66,38 @@ var appRouter = function (app) {
 module.exports = appRouter;
 
 async function getGenreList(req, res) {
-    var genre = req.params.genre;
+    const film = "film";
+    const name = "name";
+    const year = "year_film";
+    const winner = "winner";
+
+    var genre = ((req.params.genre).toString()).toUpperCase();
     var json = null;
 
-    console.log(genre);
-    console.log(oscarData.length);
-    console.log(oscarData[0].category);
 
+    console.log("Requested category: " + genre);
+
+    for(var i = 0; i < oscarData.length; i++) {
+      if(oscarData[i].category == genre) {
+        console.log("Found movie: " + oscarData[i].film);
+        var movie = oscarData[i];
+        var title = movie.film;
+        var nomineeName = movie.name;
+        var releaseYear = movie.year;
+        var awardCategory = movie.category;
+        var awardWinner = movie.winner;
+
+        var movieJSON = 
+          {
+              "year": releaseYear,
+              "name": nomineeName,
+              "category": awardCategory,
+              "winner": awardWinner
+          };
+        console.log(movieJSON);
+        json.title = movieJSON;
+      }
+    }
+    //console.log(json);
+    res.json(json);
 }
