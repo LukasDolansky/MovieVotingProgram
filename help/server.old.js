@@ -4,7 +4,7 @@ var path = require('path');
 var router = express.Router();
 //Must be node-fetch v2
 var fetch = require('node-fetch');
-const oscarData = require('../oscar_data.json');
+const oscarData = require('./oscar_data.json');
 var htmlData = __dirname + '/html/';   //__dirname : It will resolve to your project folder.
 
 //This will handle changes to the url.
