@@ -23,7 +23,7 @@ async function getList(req, res, next) {
     //Output
     res.setHeader('Content-Type', 'application/json');
     var movieData = {};
-
+    var count = 0;
     //Handle no input
     if(category == undefined && year == undefined && isWinner == undefined) {
       console.log("GET request with no parameters specified, redirecting to API home...");
@@ -52,27 +52,31 @@ async function getList(req, res, next) {
         var awardCategory = movie.category;
         var awardWinner = movie.winner;
 
+        console.log("--------------------------------------------------------------------");
         console.log("Getting IMDB ID for movie: " + title + "...");
 
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
         console.log("Movie found with ID: " + IMDB_ID);
         if(IMDB_ID == undefined) {continue;}
-        console.log("Getting TMDB ID...")
+        console.log("Getting TMDB ID...");
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
         console.log("TMDB ID found: " + TMDB_ID);
         console.log("Getting movie data from TMDB...");
-        var movieJSON = await getMovieData(TMDB_ID);
-        console.log
-
-
-        movieData[movieJSON.title] = {
-          "Movie": movieJSON.title
-        }
+        var details = await getDetails(TMDB_ID);
+        console.log("Data received for movie: " + details.title);
+        
+        count++;
+        
+        movieData[count] = {
+          category: awardCategory,
+          winner: awardWinner,
+          title: details.title,
+          details
+        };
 
       }
     }
-    console.log(movieData);
-    console.log(Object.keys(movieData).length)
+    console.log("Done!!");
     res.status(200).json(movieData);
 }
 
@@ -94,9 +98,6 @@ async function getIMDB_ID(movieName, movieReleaseYear, movieCeremonyYear) {
 
   apiURL_1 = apiBase + movie + movieRelease;        //For some reason, no one can get it straight whether or not a movie
   apiURL_2 = apiBase + movie + movieCeremony;       //released on its release year or its ceremony year. We have to try both
-
-  //Remove after testing------------------
-  console.log(movieName);
 
   var request = await fetch(apiURL_1)                                     //Try the release year
     .then(async(request) => {
@@ -126,28 +127,26 @@ async function getTMDB_ID(IMDB_ID) {
     let request = await fetch(api_url)
       .then(async(request) => {
         let json = await request.json();
-        console.log(json);
-        TMDB_ID = json.movie_results.id;
+        TMDB_ID = json['movie_results'][0].id;
       })
       .catch((err) => console.log(err))
     return TMDB_ID;
 }
 
-async function getMovieData(TMDB_ID) {
+async function getDetails(TMDB_ID) {
   let base = "https://api.themoviedb.org/3/movie/";    
   let key = "?api_key=6221e0ed54d6b02887581e40fa35381a"; // '?' needed for the API query syntax
   let movie = TMDB_ID;
   let api_url = base + movie + key;
-  let json = null;
+  let json = {};
 
   console.log(api_url);
 
   let request = await fetch(api_url)
     .then(async(request) => {
       json = await request.json();
-      console.log(json);
-      return json;
     })
     .catch((err) => console.log(err))
+  return json;
 }
 module.exports = sort;        //Export this file as a module so it can be called elsewhere
