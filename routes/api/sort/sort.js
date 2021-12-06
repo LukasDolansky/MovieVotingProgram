@@ -52,12 +52,18 @@ async function getList(req, res, next) {
         var awardCategory = movie.category;
         var awardWinner = movie.winner;
 
-        console.log("Getting movie: " + title + "...");
+        console.log("Getting IMDB ID for movie: " + title + "...");
 
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
+        console.log("Movie found with ID: " + IMDB_ID);
         if(IMDB_ID == undefined) {continue;}
+        console.log("Getting TMDB ID...")
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
+        console.log("TMDB ID found: " + TMDB_ID);
+        console.log("Getting movie data from TMDB...");
         var movieJSON = await getMovieData(TMDB_ID);
+        console.log
+
 
         movieData[movieJSON.title] = {
           "Movie": movieJSON.title
