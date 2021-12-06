@@ -12,11 +12,11 @@ var appRouter = function (app) {
   });
 
   app.get('/home',function(req,res){                    // Use this syntax for showing an html file as a web page.      
-    res.sendFile(path.join(htmlData + 'index.html'));     // Note that all you need to change is the first argument of the .get()
+    res.sendFile(htmlData + 'index.html');     // Note that all you need to change is the first argument of the .get()
   });                                                     // and the last argument of the .join()
 
   app.get('/results',function(req,res){
-    res.sendFile(path.join(htmlData + 'results.html'));
+    res.sendFile(htmlData + 'results.html');
     
   });
 

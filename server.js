@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 server(app);
 
-app.use(express.static('routes/html'));                //This allows CSS to work, not sure how or why though
+app.use(express.static('routes/html/', {
+    extensions: ['html'],
+}));                //This allows CSS to work, not sure how or why though
 
 /* Output this to the console to show the user what port to connect to if running locally */ 
 var host = app.listen(PORT, function () {

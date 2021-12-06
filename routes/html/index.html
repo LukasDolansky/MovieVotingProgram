@@ -22,7 +22,7 @@
     <!--THIS IS A NAVAGATION BAR THAT WILL HAVE THE NAV BAR LOGO I.E. THE NAME OF THE PROJECT (PRESSING ON THE NAME WILL SEND PEOPLE BACK TO THE HOME PAGE)-->
 	  <nav class="navbar">
 		  <div class="navbar__container">
-			  <a href="home" id=navbar__logo> MOVIE VOTING SYSTEM</a>
+			  <a href="/home" id=navbar__logo> MOVIE VOTING SYSTEM</a>
 		  </div>
 	  </nav>
    
@@ -32,12 +32,12 @@
       <div class="main-container">
         <divc class="main-content">
          <h1>Search Categories</h1>
-         <form action="results">
-            <label for="gsearch"></label>
+         <form action="api/categories">
+            <label for="categorySearch"></label>
             <input
               type="search"
               id="gsearch"
-              name="gsearch"
+              name="category"
               list="categories"
               required
             />
@@ -49,7 +49,7 @@
         </form>
         <!-- these are two buttons. one submits data to results page. THe other button does nothing I think-->
         <input type="submit" id="submit-button" />
-        <button>click</button>
+        <button><a href = "api/categories/actor-in-a-leading role">click</a></button>
           </div>
         </div>
       </div>
