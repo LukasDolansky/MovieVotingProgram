@@ -1,42 +1,27 @@
-const express = require('express');
-const request = require("request");
-var path = require('path');
-//Must be node-fetch v2
-var fetch = require('node-fetch');
-var htmlData = __dirname + '/html/';   //__dirname : It will resolve to your project folder.
+/* I pretty much just copied this from the REST with Express tutorial */
+// @ts-check
 
-//This will handle changes to the url.
-var appRouter = function (app) {
+/* Importing modules */
+var express = require("express");
+var bodyParser = require("body-parser");
+var server = require("./index.js");
+var app = express();
+var path = require("path");
+var router = express.Router();
+/*Setting default port if hosting service cannot provide one */
+var PORT = process.env.PORT || 3000;
 
-  app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
-    res.redirect('home');              // Note how you don't need to show the desired file, just change the url
-  });
 
-  app.get('/home',function(req,res){                    // Use this syntax for showing an html file as a web page.      
-    res.sendFile(path.join(htmlData + 'index.html'));     // Note that all you need to change is the first argument of the .get()
-  });                                                     // and the last argument of the .join()
+app.use(bodyParser.json());                             //This lets the app parse json and html properly
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.get('/results',function(req,res){
-    res.sendFile(path.join(htmlData + 'results.html'));
-    
-  });
+server(app);
 
-  //Testing API call
-  //TODO: Figure out how to manipulate data
-  //TODO: Make code cleaner - understand syntax better
-  app.get("/api", async function(req, res) {
-    let api_url = "https://api.themoviedb.org/3/movie/550?api_key=6221e0ed54d6b02887581e40fa35381a";    //May want to store API key in hidden file for security
-    let json = null;                                                                                    //Not sure why this variable is even used
-    const data = await fetch(api_url)                                                               //The glorious fetch()
-      .then((data) => json = data.json())                                                       //Parse result into json (probably not needed)
-      .catch((err) => console.log(err));                                                                //Output error if one occurs
-    console.log(json);                                                                                  //Output json data to console (probably not needed)
-    res.json(data);                                                                                 //Response of this API call
-  });
+app.use(express.static('routes/html/', {
+    extensions: ['html'],
+}));                //This allows CSS to work, not sure how or why though
 
-  //Not sure exactly what this does but it makes CSS work
-    //Apparently this needs to be after redirect calls. So keep this at the bottom of the function...
-  app.use(express.static('html'));
-  }
-  
-  module.exports = appRouter;
+/* Output this to the console to show the user what port to connect to if running locally */ 
+var host = app.listen(PORT, function () {
+    console.log("App running on port: ", PORT);
+});

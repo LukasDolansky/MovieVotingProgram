@@ -1,62 +1,26 @@
-/* I pretty much just copied this from the REST with Express tutorial */
-// @ts-check
+var path = require('path');
+//Must be node-fetch v2
+global.__rootdir = __dirname;
+var htmlData = __rootdir + '/routes/html/';   //__dirname : It will resolve to your project folder.
+const api = require('./routes/api/api.js');
 
-/* Importing modules */
-var express = require("express");
-var bodyParser = require("body-parser");
-var server = require("./server.js");
-var app = express();
-var path = require("path");
-var router = express.Router();
-/*Setting default port if hosting service cannot provide one */
-var PORT = process.env.PORT || 3000;
+//This will handle changes to the url.
+var appRouter = function (app) {
 
-/*I forget what this does. Maybe handling json and html? */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+  app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
+    res.redirect('home');              // Note how you don't need to show the desired file, just change the url
+  });
 
-/* Run the routes script */
-server(app);
+  app.get('/home',function(req,res){                    // Use this syntax for showing an html file as a web page.      
+    res.sendFile(htmlData + 'index.html');     // Note that all you need to change is the first argument of the .get()
+  });                                                     // and the last argument of the .join()
 
-/* Output this to the console to show the user what port to connect to if running locally */ 
-var host = app.listen(PORT, function () {
-    console.log("App running on port: ", PORT);
-});
+  app.get('/results',function(req,res){
+    res.sendFile(htmlData + 'results.html');
+    
+  });
 
-//const express = require('express');
-//const app = express();
-/*const app = require('express');
-const PORT = 8080;
+  app.use('/api', api);             //This begins the routing for API requests - see /routes/api/api.js for the next step
+}
 
-//app.use( express.json() )
-
-app.listen(
-    PORT,
-    () => console.log(`it's alive on http://localhost:${PORT}`)
-)
-
-
-
-/*
-app.get('/tshirt', (req,res) =>{
-    res.status(200).send({
-        tshirt:'^',
-        size: 'large'
-    })
-});
-app.post(' /tshirt/:id', (req, res) => {
-
-    const{ id } = req.params;
-    const{ logo } = req.body;
-
-    if (!logo) {
-        res.status(418).send({ message: 'We need a logo!'})
-    }
-
-    res.send({
-        tshirt: `// with your ${logo} and ID of ${id}`
-    })
-
-
-});
-*/
+module.exports = appRouter;
