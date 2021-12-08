@@ -11,7 +11,7 @@ THIS IS EVERYTHING BELOW THE NAVBAR
   justify-self: center;
   width: 80%;
   margin: 0 auto;
-  height: 90vh;
+  height: 80vh;
   background-color: black;
 }
 
@@ -21,7 +21,17 @@ THIS IS EVERYTHING BELOW THE NAVBAR
   color: white;
   width: 80%;
 }
-
+h1 {
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  background-image: linear-gradient(to top, #ce8526e8 20%, white 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
 .main #title {
   z-index: 1;
   font-family: "Courier New";
@@ -30,21 +40,36 @@ THIS IS EVERYTHING BELOW THE NAVBAR
   position: relative;
   z-index: 0;
   width: 700px;
-  height: 288px;
+  height: 300px;
 }
 #gsearch {
   width: 1000px;
-  color: gold;
+  border: 4px solid #ce8526e8;
+  border-radius: 5px;
+  margin: 8px auto;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+#gsearch:focus {
+  border-color: #ce8526e8;
+  box-shadow: 0px 0px 5px 0px #ce8526e8;
 }
 body {
   background-color: black;
 }
 
 #submit-button {
-  color: black;
-  font-family: "Courier New";
-}
-h1 {
-  font-size: 20px;
-  font-family: "Courier New";
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  background-color: black;
+  background-image: linear-gradient(to top, #ce8526e8 20%, white 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  border: none;
 }
