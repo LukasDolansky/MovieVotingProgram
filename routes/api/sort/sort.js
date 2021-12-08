@@ -31,20 +31,14 @@ async function getList(req, res, next) {
       return;
     }
 
-    console.log("GET request parameters:");
-    console.log("Category: " + category);
-    console.log("Year: " + year);
-    console.log("Winner: " + isWinner);
 
     //Comb through oscar_data until something matches URL criteria
     for(var i = (oscarData.length - 1); i >= 0 ; i--) {
       var movie = oscarData[i];     //Helps readability
-
       if((category == undefined || movie.category == category) && 
         (year == undefined || movie.year_film == year) && 
         (isWinner == undefined || movie.winner == isWinner)) {    
 
-        //This will be rewritten once we can make IMDB -> TMDB API calls  
         var title = movie.film;                                 //You don't need to format the ID as a string even though that's what it is in the json!
         var nomineeName = movie.name;
         var releaseYear = movie.year_film;
@@ -52,21 +46,22 @@ async function getList(req, res, next) {
         var awardCategory = movie.category;
         var awardWinner = movie.winner;
 
-        console.log("--------------------------------------------------------------------");
-        console.log("Getting IMDB ID for movie: " + title + "...");
+        if(movie == undefined) {
+          continue;
+        }
 
+        //Get IMDB ID
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
-        console.log("Movie found with ID: " + IMDB_ID);
-        if(IMDB_ID == undefined) {continue;}
-        console.log("Getting TMDB ID...");
+        if(IMDB_ID == undefined) {continue;}                                //Handle awards not associated with movie
+        //Get TMDB_ID by searching with IMDB ID
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
-        console.log("TMDB ID found: " + TMDB_ID);
-        console.log("Getting movie data from TMDB...");
-        var details = await getDetails(TMDB_ID);
+        //Get TMDB data by searching with TMDB ID
+        var details = await getDetails(TMDB_ID, title);
         console.log("Data received for movie: " + details.title);
         
         count++;
         
+        //Build JSON result
         movieData[count] = {
           category: awardCategory,
           winner: awardWinner,
@@ -116,18 +111,21 @@ async function getIMDB_ID(movieName, movieReleaseYear, movieCeremonyYear) {
   return movieID;
 }
 
-async function getTMDB_ID(IMDB_ID) {
+async function getTMDB_ID(IMDB_ID, title) {
     let base = "https://api.themoviedb.org/3/find/";    
     let key = "?api_key=6221e0ed54d6b02887581e40fa35381a"; // '?' needed for the API query syntax
     let movie = IMDB_ID;
     let api_url = base + IMDB_ID + key + "&language=en-US&external_source=imdb_id";
     let TMDB_ID = null;
 
-    console.log(api_url);
     let request = await fetch(api_url)
       .then(async(request) => {
         let json = await request.json();
-        TMDB_ID = json['movie_results'][0].id;
+        try{
+          TMDB_ID = json['movie_results'][0].id;
+        } catch(err) {
+          console.log("Cannot get data for movie: " + title);
+        }
       })
       .catch((err) => console.log(err))
     return TMDB_ID;
@@ -140,8 +138,6 @@ async function getDetails(TMDB_ID) {
   let api_url = base + movie + key;
   let json = {};
 
-  console.log(api_url);
-
   let request = await fetch(api_url)
     .then(async(request) => {
       json = await request.json();
@@ -149,4 +145,5 @@ async function getDetails(TMDB_ID) {
     .catch((err) => console.log(err))
   return json;
 }
+
 module.exports = sort;        //Export this file as a module so it can be called elsewhere

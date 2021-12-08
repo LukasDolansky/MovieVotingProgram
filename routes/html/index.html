@@ -32,7 +32,7 @@
       <div class="main-container">
         <divc class="main-content">
          <h1>Search Categories</h1>
-         <form action="api/categories">
+         <form action="api/sort">
             <label for="categorySearch"></label>
             <input
               type="search"
@@ -42,14 +42,14 @@
               required
             />
             <datalist id="categories">
-              <option value="best picture" />
-              <option value="best screenplay" />
-              <option value="International Feature Film" />
+              <option value="ACTOR IN A LEADING ROLE" />
+              <option value="VISUAL EFFECTS" />
+              <option value="BEST PICTURE" />
             </datalist>
         </form>
         <!-- these are two buttons. one submits data to results page. THe other button does nothing I think-->
         <input type="submit" id="submit-button" />
-        <button><a href = "api/categories/actor-in-a-leading role">click</a></button>
+        <button><a href = "api/sort/?category=ACTOR IN A LEADING ROLE&winner=True">click</a></button>
           </div>
         </div>
       </div>
