@@ -8,7 +8,7 @@ const html = require('./routes/html/index.js');
 var appRouter = function (app) {
 
   app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
-    res.redirect('home');              // Note how you don't need to show the desired file, just change the url
+    res.redirect('/home');              // Note how you don't need to show the desired file, just change the url
   });
 
   app.use('/home', html);           //This begins the routing for the front-end gui - see /routes/html                                          
