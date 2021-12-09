@@ -64,7 +64,7 @@ async function getList(req, res, next) {
         //Build JSON result
         movieData[count] = {
           category: awardCategory,
-          "winner": awardWinner,
+          winner: awardWinner,
           title: details.title,
           details
         };
