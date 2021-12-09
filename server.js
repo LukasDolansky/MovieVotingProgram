@@ -19,7 +19,7 @@ server(app);
 
 app.use(express.static('routes/html/', {
     extensions: ['html'],
-}));                //This allows CSS to work, not sure how or why though
+}));                //This allows CSS to work
 
 /* Output this to the console to show the user what port to connect to if running locally */ 
 var host = app.listen(PORT, function () {

@@ -1,5 +1,5 @@
 @import url("homepage.css");
-@import url("results.css");
+@import url("results/results.css");
 
 * {
   margin: 0;
