@@ -6,7 +6,7 @@ var fetch = require('node-fetch');
 const api = require('../api');
 const oscarData = require(__rootdir + '/oscar_data.json');
 
-const sort = express.Router({mergeParams : true});        //mergeParams lets chained router calls maintain their parameters and queries
+const sort = express.Router({mergeParams : true});
 
 /* API SELECTIONS:
     CATEGORY
@@ -32,6 +32,7 @@ async function getList(req, res, next) {
     }
 
 
+    console.log("Getting data for movies:");
     //Comb through oscar_data until something matches URL criteria
     for(var i = (oscarData.length - 1); i >= 0 ; i--) {
       var movie = oscarData[i];     //Helps readability
@@ -39,34 +40,40 @@ async function getList(req, res, next) {
         (year == undefined || movie.year_film == year) && 
         (isWinner == undefined || movie.winner == isWinner)) {    
 
-        var title = movie.film;                                 //You don't need to format the ID as a string even though that's what it is in the json!
-        var nomineeName = movie.name;
+        var title = movie.film;                                           //You don't need to format the ID as a string even though that's what it is in the json!
+        //var description = '';
+        var imdbLink = "https://www.imdb.com/title/";
         var releaseYear = movie.year_film;
         var ceremonyYear = movie.year_ceremony;              
-        var awardCategory = movie.category;
-        var awardWinner = movie.winner;
-
-        if(movie == undefined) {
-          continue;
-        }
-
+        //var awardCategory = movie.category;
+        //var awardWinner = movie.winner;
+        var posterURL = 'https://image.tmdb.org/t/p/w500/';
         //Get IMDB ID
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
-        if(IMDB_ID == undefined) {continue;}                                //Handle awards not associated with movie
+        if(IMDB_ID == undefined) {                                            //Handle awards not associated with movie
+          console.log("Failure retrieving IMDB ID for movie " + title);
+          count++;
+          continue;
+        }
+        imdbLink += IMDB_ID;                                
         //Get TMDB_ID by searching with IMDB ID
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
         //Get TMDB data by searching with TMDB ID
         var details = await getDetails(TMDB_ID, title);
-        console.log("Data received for movie: " + details.title);
         
+        posterURL += details.poster_path;
         count++;
         
         //Build JSON result
         movieData[count] = {
-          category: awardCategory,
-          winner: awardWinner,
-          title: details.title,
-          details
+          title: title,
+          posterURL: posterURL,
+          description: details.overview,
+          imdbLink: imdbLink,
+          rating: details.vote_average,
+          ceremonyYear: ceremonyYear,
+          category: movie.category,
+          winner: movie.winner
         };
 
       }
@@ -123,9 +130,7 @@ async function getTMDB_ID(IMDB_ID, title) {
         let json = await request.json();
         try{
           TMDB_ID = json['movie_results'][0].id;
-        } catch(err) {
-          console.log("Cannot get data for movie: " + title);
-        }
+        } catch(err) {}
       })
       .catch((err) => console.log(err))
     return TMDB_ID;
