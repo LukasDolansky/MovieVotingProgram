@@ -28,7 +28,6 @@ async function getData(category, year, isWinner) {
       testData = await testData.json();
       return testData;
     });
-    console.log(testData);
   }
 
   module.exports = getData;        
