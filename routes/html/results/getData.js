@@ -1,5 +1,10 @@
 var fetch = require('node-fetch');
 
+/* API SELECTIONS:
+    CATEGORY
+    YEAR
+    WINNER
+*/
 async function getData(category, year, isWinner) {
     const apiBase = 'http://localhost:3000/api/sort/?';
     var thisCategory = '';
@@ -23,7 +28,7 @@ async function getData(category, year, isWinner) {
       testData = await testData.json();
       return testData;
     });
-    return testData;
+    console.log(testData);
   }
 
   module.exports = getData;        

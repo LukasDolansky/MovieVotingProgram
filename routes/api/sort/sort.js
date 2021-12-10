@@ -40,33 +40,40 @@ async function getList(req, res, next) {
         (year == undefined || movie.year_film == year) && 
         (isWinner == undefined || movie.winner == isWinner)) {    
 
-        var title = movie.film;                                 //You don't need to format the ID as a string even though that's what it is in the json!
-        var nomineeName = movie.name;
+        var title = movie.film;                                           //You don't need to format the ID as a string even though that's what it is in the json!
+        //var description = '';
+        var imdbLink = "https://www.imdb.com/title/";
         var releaseYear = movie.year_film;
         var ceremonyYear = movie.year_ceremony;              
-        var awardCategory = movie.category;
-        var awardWinner = movie.winner;
-
+        //var awardCategory = movie.category;
+        //var awardWinner = movie.winner;
+        var posterURL = 'https://image.tmdb.org/t/p/w500/';
         //Get IMDB ID
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
-        if(IMDB_ID == undefined) {
+        if(IMDB_ID == undefined) {                                            //Handle awards not associated with movie
           console.log("Failure retrieving IMDB ID for movie " + title);
           count++;
           continue;
-        }                                //Handle awards not associated with movie
+        }
+        imdbLink += IMDB_ID;                                
         //Get TMDB_ID by searching with IMDB ID
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
         //Get TMDB data by searching with TMDB ID
         var details = await getDetails(TMDB_ID, title);
         
+        posterURL += details.poster_path;
         count++;
         
         //Build JSON result
         movieData[count] = {
-          category: awardCategory,
-          winner: awardWinner,
-          title: details.title,
-          details
+          title: title,
+          posterURL: posterURL,
+          description: details.overview,
+          imdbLink: imdbLink,
+          rating: details.vote_average,
+          ceremonyYear: ceremonyYear,
+          category: movie.category,
+          winner: movie.winner
         };
 
       }
