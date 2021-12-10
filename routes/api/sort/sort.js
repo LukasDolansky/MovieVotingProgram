@@ -6,7 +6,7 @@ var fetch = require('node-fetch');
 const api = require('../api');
 const oscarData = require(__rootdir + '/oscar_data.json');
 
-const sort = express.Router({mergeParams : true});        //mergeParams lets chained router calls maintain their parameters and queries
+const sort = express.Router({mergeParams : true});
 
 /* API SELECTIONS:
     CATEGORY
@@ -32,6 +32,7 @@ async function getList(req, res, next) {
     }
 
 
+    console.log("Getting data for movies:");
     //Comb through oscar_data until something matches URL criteria
     for(var i = (oscarData.length - 1); i >= 0 ; i--) {
       var movie = oscarData[i];     //Helps readability
@@ -46,18 +47,17 @@ async function getList(req, res, next) {
         var awardCategory = movie.category;
         var awardWinner = movie.winner;
 
-        if(movie == undefined) {
-          continue;
-        }
-
         //Get IMDB ID
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
-        if(IMDB_ID == undefined) {continue;}                                //Handle awards not associated with movie
+        if(IMDB_ID == undefined) {
+          console.log("Failure retrieving IMDB ID for movie " + title);
+          count++;
+          continue;
+        }                                //Handle awards not associated with movie
         //Get TMDB_ID by searching with IMDB ID
         var TMDB_ID = await getTMDB_ID(IMDB_ID);
         //Get TMDB data by searching with TMDB ID
         var details = await getDetails(TMDB_ID, title);
-        console.log("Data received for movie: " + details.title);
         
         count++;
         
@@ -123,9 +123,7 @@ async function getTMDB_ID(IMDB_ID, title) {
         let json = await request.json();
         try{
           TMDB_ID = json['movie_results'][0].id;
-        } catch(err) {
-          console.log("Cannot get data for movie: " + title);
-        }
+        } catch(err) {}
       })
       .catch((err) => console.log(err))
     return TMDB_ID;
