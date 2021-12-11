@@ -7,6 +7,9 @@ const index = require('../index');
 const oscarData = require(__rootdir + '/oscar_data.json');
 const getData = require('./getData.js');
 const results = express.Router({mergeParams : true});        //mergeParams lets chained router calls maintain their parameters and queries
+//New Code: variable for data
+var storedData;
+
 
 /* API SELECTIONS:
     CATEGORY
@@ -25,6 +28,8 @@ results.get('/', async (req,res) => {
   console.log(isWinner);
   
   data = await getData(category, year, isWinner);
+  //New Code: store data into variable
+  storedData = data;
   return data;
 });
 
