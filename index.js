@@ -7,6 +7,16 @@ const html = require('./routes/html/index.js');
 //This will handle changes to the url.
 var appRouter = function (app) {
 
+  app.use((req, res, next) => {
+    if (req.path.substr(-1) === '/' && req.path.length > 1) {
+      const query = req.url.slice(req.path.length)
+      const safepath = req.path.slice(0, -1).replace(/\/+/g, '/')
+      res.redirect(301, safepath + query)
+    } else {
+      next()
+    }
+  })
+  
   app.get('/',function(req,res){        // Use this syntax to handle redirects to other areas (Not super important but makes you feel smart)
     res.redirect('/home');              // Note how you don't need to show the desired file, just change the url
   });
