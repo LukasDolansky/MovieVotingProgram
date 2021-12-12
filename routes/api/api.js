@@ -14,31 +14,7 @@ const api = express.Router();
 api.use('/sort', sort);
 
 api.get('/', (req, res) => {
-    res.status(200).redirect("API Home");
+    res.status(200).sendFile(__dirname + "/api.html");
 })
-
-
-//Discard this after testing is done--------------------------------------------
-api.get('/test', testFunction);
-async function testFunction(req, res) {
-    let base = "https://api.themoviedb.org/3/movie/";    
-    let key = "?api_key=6221e0ed54d6b02887581e40fa35381a"; // '?' needed for the API query syntax
-    let movie = req.query.movie;
-    console.log(req.query);
-    let api_url = base + movie + key;
-    let json = null;
-
-    console.log("Attempting API call for movie ID: " + movie);
-    let data = await fetch(api_url)
-      .then((data) => {
-        console.log("success!");
-        console.log(data);
-        return json = data.json();
-      })
-      .catch((err) => console.log(err))
-    res.json(data);
-}
-//----------------------------------------------------------------------------------
-
 
 module.exports = api;

@@ -1,5 +1,4 @@
 const express = require('express');
-var fetch = require('node-fetch');
 const results = require('./results/results.js');
 
 const index = express.Router();
