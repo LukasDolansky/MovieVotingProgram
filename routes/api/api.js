@@ -14,7 +14,7 @@ const api = express.Router();
 api.use('/sort', sort);
 
 api.get('/', (req, res) => {
-    res.status(200).send("API Home");
+    res.status(200).redirect("API Home");
 })
 
 
