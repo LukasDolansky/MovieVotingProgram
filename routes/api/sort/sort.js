@@ -19,13 +19,15 @@ async function getList(req, res, next) {
     //Inputs
     var category = req.query.category; 
     var year = req.query.year;                           
-    var isWinner = req.query.winner;                      
+    var isWinner = req.query.winner;
+
     //Output
     res.setHeader('Content-Type', 'application/json');
     var movieData = {};
     var count = 0;
-    //Handle no input
-    if(category == undefined && year == undefined && isWinner == undefined) {
+
+    //Handles no input
+    if (category == undefined && year == undefined && isWinner == undefined) {
       console.log("GET request with no parameters specified, redirecting to API home...");
       res.redirect('/api');
       return;

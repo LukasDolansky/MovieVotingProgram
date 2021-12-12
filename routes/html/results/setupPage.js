@@ -70,8 +70,12 @@ async function getInformation() {
 }
 
 async function getData(category, year, isWinner) {
-	console.log("entering getData()");
-	const apiBase = 'https://movie-voting-program.herokuapp.com/api/sort?';
+	var apiBase = ""
+	if (window.location.hostname == "localhost") {
+		apiBase = "http://localhost:3000/api/sort/?";
+	} else {
+		apiBase = 'https://movie-voting-program.herokuapp.com/api/sort?';
+	}
 	var thisCategory = '';
 	var thisYear = '';
 	var thisIsWinner = '';
