@@ -67,6 +67,10 @@ hr {
 }
 
 .loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #ce8526e8; /* Blue */
   border-radius: 50%;
@@ -80,16 +84,16 @@ hr {
   100% { transform: rotate(360deg); }
 }
 
-#movie-data {
+#poster {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.description {
+#description {
   text-align: center;
 }
 
-.title {
+#title {
   text-align: center;
 }

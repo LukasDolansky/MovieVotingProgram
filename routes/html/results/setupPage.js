@@ -44,6 +44,7 @@ async function getInformation() {
 			var title = document.createElement('h2');
 			title.setAttribute("id", "title");
 			var poster = document.createElement('img');
+			poster.setAttribute("id", "poster");
 			var movieLink = document.createElement('a');
 			var description = document.createElement('p');
 			description.setAttribute("id", "description");
