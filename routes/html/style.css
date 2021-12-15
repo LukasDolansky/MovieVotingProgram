@@ -50,8 +50,13 @@
   text-decoration: none;
 }
 
-#navbar__logo {
+.navbar__logo {
   cursor: pointer;
+}
+
+.dropdown {
+  width: 50%;
+  box-sizing: border-box;
 }
 
 hr {
