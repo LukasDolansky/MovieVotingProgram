@@ -31,6 +31,7 @@ async function getInformation() {
 		winner = urlSearchParams.get('winner');
 	}
 	movieListContainer = document.createElement('div');
+	movieListContainer.setAttribute("class", "movie-data");
 	document.getElementsByTagName('body')[0].appendChild(movieListContainer);
 
 	var movieData = await getData(category, year, winner);
@@ -41,9 +42,11 @@ async function getInformation() {
 		console.log(movieData[k] != undefined);
 		if (movieData[index] != undefined) {
 			var title = document.createElement('h2');
+			title.setAttribute("id", "title");
 			var poster = document.createElement('img');
 			var movieLink = document.createElement('a');
 			var description = document.createElement('p');
+			description.setAttribute("id", "description");
 
 			//insert data into html elements
 			title.textContent = movieData[index].title;
@@ -67,6 +70,7 @@ async function getInformation() {
 		}
 		index = index + 1;
 	}
+	removeLoader();
 }
 
 async function getData(category, year, isWinner) {
@@ -99,4 +103,9 @@ async function getData(category, year, isWinner) {
 			return testData;
 		});
 	return testData;
+}
+
+function removeLoader() {
+	var loader = document.getElementById("loader");
+	loader.remove();
 }
