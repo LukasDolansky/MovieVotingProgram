@@ -31,7 +31,7 @@ function setTitle() {
 		} else if (urlSearchParams.get("year") == null) {
 			webHeader.textContent = "ALL " + category + " NOMINEES";
 		} else {
-			webHeader.textContent = category + " - " + year;
+			webHeader.textContent = category + " NOMINEES - " + year;
 		}
 	}
 	
@@ -70,9 +70,18 @@ async function getInformation() {
 		if (movieData[index] != undefined) {
 
 			var movTitle = movieData[index].title;
+			var rating = "TMDB Rating: " + movieData[index].rating + " / 10";
+			var winResult = "Won Award: ";
 			var movDesc = movieData[index].description;
 			var movLink = movieData[index].imdbLink;
 			var posterURL = movieData[index].posterURL;
+
+			if(movieData[index].winner == "True") {
+				winResult += "Yes";
+			} else {
+				winResult += "No";
+			}
+
 
 			movieContainer = document.createElement('div');
 			movieListContainer.appendChild(movieContainer);
@@ -87,7 +96,10 @@ async function getInformation() {
 
 			var title = document.createElement('h2');
 			title.setAttribute("class", "title");
-			title.setAttribute("id", movTitle+" _Title");
+			title.setAttribute("id", movTitle + " _Title");
+			var rating_winner = document.createElement('h3');
+			rating_winner.setAttribute("class", "rating");
+			rating_winner.setAttribute("id", movTitle + "_Rating");
 			var poster = document.createElement('img');
 			poster.setAttribute("class", "poster_img");
 			poster.setAttribute("id", movTitle +"_Poster");
@@ -97,7 +109,8 @@ async function getInformation() {
 			description.setAttribute("id", movTitle+"_Description");
 
 			//insert data into html elements
-			title.textContent = movieData[index].title;
+			title.textContent = movTitle;
+			rating_winner.textContent = rating + " | " + winResult;
 			poster.setAttribute('src', posterURL);
 			poster.setAttribute('height', 370);
 			poster.setAttribute('width', 250);
@@ -107,6 +120,7 @@ async function getInformation() {
 			movieContainer.appendChild(title);
 			posterContainer.appendChild(poster);
 			movieContainer.appendChild(posterContainer);
+			movieContainer.appendChild(rating_winner);
 			movieContainer.appendChild(document.createElement('br'));
 			movieContainer.appendChild(description);
 			movieContainer.appendChild(document.createElement('br'));
