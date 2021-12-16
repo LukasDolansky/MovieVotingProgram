@@ -12,9 +12,11 @@ function setTitle() {
 	var urlSearchParams = new URLSearchParams(window.location.search);
 	var category = urlSearchParams.get('category');
 	var webHeader = document.createElement('h1');
+	var hr = document.createElement('hr');
 	webHeader.setAttribute("id", "category-header");
 	webHeader.textContent = category;
 	document.getElementsByTagName('body')[0].appendChild(webHeader);
+	document.getElementsByTagName('body')[0].appendChild(hr);
 }
 
 async function getInformation() {
@@ -62,7 +64,7 @@ async function getInformation() {
 			posterContainer.setAttribute('height', 370);
 			posterContainer.setAttribute('width', 250);
 
-			var title = document.createElement('h1');
+			var title = document.createElement('h2');
 			title.setAttribute("class", "title");
 			title.setAttribute("id", movTitle+" _Title");
 			var poster = document.createElement('img');
@@ -80,8 +82,7 @@ async function getInformation() {
 			poster.setAttribute('width', 250);
 			description.textContent = movieData[index].description;
 
-
-
+			//Insert html elements into page
 			movieContainer.appendChild(title);
 			posterContainer.appendChild(poster);
 			movieContainer.appendChild(posterContainer);
@@ -89,12 +90,10 @@ async function getInformation() {
 			movieContainer.appendChild(description);
 			movieContainer.appendChild(document.createElement('br'));
 
+			//Embed IMDB Link into relevant elements
 			var posterElement = document.getElementById(movTitle+"_Poster").parentElement;
 			var imgEl = posterElement.innerHTML;
-			console.log(posterElement.innerHTML);
 			posterElement.innerHTML = "<a href='"+ movLink + "'>" + imgEl + "</a'";
-			console.log(imgEl);
-			console.log(posterElement.innerHTML);
 			k++;
 		}
 		index = index + 1;

@@ -8,6 +8,11 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  border-right: 150px solid black;
+  border-left: 150px solid black;
+  }
+
 .navbar {
   background: black;
   font-size: 2.5rem;
@@ -90,14 +95,15 @@ hr {
   position:relative;
   height: 370px;
   width: 250px;
-  padding-right: 0px;
-  padding-left: 0px;
+  padding: 5px;
   background-position: center;
-  background-color: #4D4E56;
+  background-color: #d89948e8;
 }
 
 .description {
   text-align: center;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .title {
@@ -113,4 +119,8 @@ hr {
   align-items: center;
   text-align: center;
   justify-content: center;
+}
+
+.movie_data {
+  padding: 10%;
 }
