@@ -13,6 +13,7 @@ THIS IS EVERYTHING BELOW THE NAVBAR
   margin: 0 auto;
   height: 80vh;
   background-color: black;
+  justify-content: center;
 }
 
 h1 {
@@ -79,4 +80,9 @@ body {
   -moz-text-fill-color: transparent;
   border: groove;
   padding: 1%;
+}
+
+.dropdown {
+  width: 150%;
+  box-sizing: border-box;
 }

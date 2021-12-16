@@ -31,6 +31,7 @@
   padding: 0 50px;
   max-width: 1720px;
   background-color: black;
+  justify-content: center;
 }
 
 #navbar__logo {
@@ -48,15 +49,13 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  text-align: center;
 }
 
 .navbar__logo {
   cursor: pointer;
-}
-
-.dropdown {
-  width: 50%;
-  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
 }
 
 hr {
@@ -64,4 +63,41 @@ hr {
   height: 5px;
   color: #ce8526e8;
   background-color: #ce8526e8;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #ce8526e8;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#poster {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#description {
+  text-align: center;
+}
+
+#title {
+  text-align: center;
+}
+
+#category-header {
+  display: block;
+  text-align: center;
 }

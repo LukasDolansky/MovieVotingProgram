@@ -12,6 +12,7 @@ function setTitle() {
 	var urlSearchParams = new URLSearchParams(window.location.search);
 	var category = urlSearchParams.get('category');
 	var webHeader = document.createElement('h1');
+	webHeader.setAttribute("id", "category-header");
 	webHeader.textContent = category;
 	document.getElementsByTagName('body')[0].appendChild(webHeader);
 }
@@ -31,6 +32,7 @@ async function getInformation() {
 		winner = urlSearchParams.get('winner');
 	}
 	movieListContainer = document.createElement('div');
+	movieListContainer.setAttribute("class", "movie-data");
 	document.getElementsByTagName('body')[0].appendChild(movieListContainer);
 
 	var movieData = await getData(category, year, winner);
@@ -41,15 +43,21 @@ async function getInformation() {
 		console.log(movieData[k] != undefined);
 		if (movieData[index] != undefined) {
 			var title = document.createElement('h2');
+			title.setAttribute("id", "title");
 			var poster = document.createElement('img');
+			poster.setAttribute("id", "poster");
 			var movieLink = document.createElement('a');
 			var description = document.createElement('p');
+			description.setAttribute("id", "description");
 
 			//insert data into html elements
 			title.textContent = movieData[index].title;
 			poster.setAttribute('src', movieData[index].posterURL);
 			poster.setAttribute('height', 370);
 			poster.setAttribute('width', 250);
+			imdbLink = movieData[index].imdbLink;
+			poster.setAttribute("href", imdbLink);
+			title.setAttribute('href', imdbLink);
 			movieLink.textContent = movieData[index].imdbLink;
 			movieLink.setAttribute('href', movieData[index].imdbLink)
 			description.textContent = movieData[index].description;
@@ -67,6 +75,7 @@ async function getInformation() {
 		}
 		index = index + 1;
 	}
+	removeLoader();
 }
 
 async function getData(category, year, isWinner) {
@@ -99,4 +108,9 @@ async function getData(category, year, isWinner) {
 			return testData;
 		});
 	return testData;
+}
+
+function removeLoader() {
+	var loader = document.getElementById("loader");
+	loader.remove();
 }
