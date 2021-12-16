@@ -84,7 +84,7 @@ async function getList(req, res, next) {
 
 //TODO: Uses OMDB API to get IMDB ID 
 async function getIMDB_ID(movieName, movieReleaseYear, movieCeremonyYear) {
-  const apiKey = "1f6dc1cf&t";
+  const apiKey = "59174cfa";
   const apiBase = "https://www.omdbapi.com/?apikey=" + apiKey;
   //Inputs
   var movie = "&t=" + movieName;
