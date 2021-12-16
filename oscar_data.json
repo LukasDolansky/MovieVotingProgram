@@ -49539,7 +49539,7 @@
   "ceremony": "50",
   "category": "ACTOR IN A SUPPORTING ROLE",
   "name": "Alec Guinness",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "False"
  },
  {
@@ -49683,7 +49683,7 @@
   "ceremony": "50",
   "category": "ART DIRECTION",
   "name": "Art Direction:  John Barry, Norman Reynolds, Leslie Dilley  Set Decoration:  Roger Christian",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -49782,7 +49782,7 @@
   "ceremony": "50",
   "category": "COSTUME DESIGN",
   "name": "John Mollo",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -49818,7 +49818,7 @@
   "ceremony": "50",
   "category": "DIRECTING",
   "name": "George Lucas",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "False"
  },
  {
@@ -49953,7 +49953,7 @@
   "ceremony": "50",
   "category": "FILM EDITING",
   "name": "Paul Hirsch, Marcia Lucas, Richard Chew",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -50052,7 +50052,7 @@
   "ceremony": "50",
   "category": "MUSIC (Original Score)",
   "name": "John Williams",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -50160,7 +50160,7 @@
   "ceremony": "50",
   "category": "BEST PICTURE",
   "name": "Gary Kurtz, Producer",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "False"
  },
  {
@@ -50286,7 +50286,7 @@
   "ceremony": "50",
   "category": "SOUND",
   "name": "Don MacDougall, Ray West, Bob Minkler, Derek Ball",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -50313,7 +50313,7 @@
   "ceremony": "50",
   "category": "VISUAL EFFECTS",
   "name": "John Stears, John Dykstra, Richard Edlund, Grant McCune, Robert Blalack",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "True"
  },
  {
@@ -50394,7 +50394,7 @@
   "ceremony": "50",
   "category": "WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)",
   "name": "George Lucas",
-  "film": "Star Wars",
+  "film": "Star Wars: Episode IV - A New Hope",
   "winner": "False"
  },
  {
@@ -52600,7 +52600,7 @@
   "ceremony": "53",
   "category": "ART DIRECTION",
   "name": "Art Direction:  Norman Reynolds, Leslie Dilley, Harry Lange, Alan Tomkins  Set Decoration:  Michael Ford",
-  "film": "The Empire Strikes Back",
+  "film": "Star Wars: Episode V - The Empire Strikes Back",
   "winner": "False"
  },
  {
@@ -52960,7 +52960,7 @@
   "ceremony": "53",
   "category": "MUSIC (Original Score)",
   "name": "John Williams",
-  "film": "The Empire Strikes Back",
+  "film": "Star Wars: Episode V - The Empire Strikes Back",
   "winner": "False"
  },
  {
@@ -53149,7 +53149,7 @@
   "ceremony": "53",
   "category": "SOUND",
   "name": "Bill Varney, Steve Maslow, Gregg Landaker, Peter Sutton",
-  "film": "The Empire Strikes Back",
+  "film": "Star Wars: Episode V - The Empire Strikes Back",
   "winner": "True"
  },
  {
@@ -53266,7 +53266,7 @@
   "ceremony": "53",
   "category": "SPECIAL ACHIEVEMENT AWARD (Visual Effects)",
   "name": "Brian Johnson, Richard Edlund, Dennis Muren, Bruce Nicholson",
-  "film": "The Empire Strikes Back",
+  "film": "Star Wars: Episode V - The Empire Strikes Back",
   "winner": "True"
  },
  {
@@ -55405,7 +55405,7 @@
   "ceremony": "56",
   "category": "ART DIRECTION",
   "name": "Art Direction:  Norman Reynolds, Fred Hole, James Schoppe  Set Decoration:  Michael Ford",
-  "film": "Return of the Jedi",
+  "film": "Star Wars: Episode VI - Return of the Jedi",
   "winner": "False"
  },
  {
@@ -55765,7 +55765,7 @@
   "ceremony": "56",
   "category": "MUSIC (Original Score)",
   "name": "John Williams",
-  "film": "Return of the Jedi",
+  "film": "Star Wars: Episode VI - Return of the Jedi",
   "winner": "False"
  },
  {
@@ -55981,7 +55981,7 @@
   "ceremony": "56",
   "category": "SOUND",
   "name": "Ben Burtt, Gary Summers, Randy Thom, Tony Dawe",
-  "film": "Return of the Jedi",
+  "film": "Star Wars: Episode VI - Return of the Jedi",
   "winner": "False"
  },
  {
@@ -56017,7 +56017,7 @@
   "ceremony": "56",
   "category": "SOUND EFFECTS EDITING",
   "name": "Ben Burtt",
-  "film": "Return of the Jedi",
+  "film": "Star Wars: Episode VI - Return of the Jedi",
   "winner": "False"
  },
  {
@@ -56125,7 +56125,7 @@
   "ceremony": "56",
   "category": "SPECIAL ACHIEVEMENT AWARD (Visual Effects)",
   "name": "Richard Edlund, Dennis Muren, Ken Ralston, Phil Tippett",
-  "film": "Return of the Jedi",
+  "film": "Star Wars: Episode VI - Return of the Jedi",
   "winner": "True"
  },
  {
@@ -71754,7 +71754,7 @@
   "ceremony": "72",
   "category": "SOUND",
   "name": "Gary Rydstrom, Tom Johnson, Shawn Murphy, John Midgley",
-  "film": "Star Wars Episode I: The Phantom Menace",
+  "film": "Star Wars: Episode I - The Phantom Menace",
   "winner": "False"
  },
  {
@@ -71781,7 +71781,7 @@
   "ceremony": "72",
   "category": "SOUND EFFECTS EDITING",
   "name": "Ben Burtt, Tom Bellfort",
-  "film": "Star Wars Episode I: The Phantom Menace",
+  "film": "Star Wars: Episode I - The Phantom Menace",
   "winner": "False"
  },
  {
@@ -71799,7 +71799,7 @@
   "ceremony": "72",
   "category": "VISUAL EFFECTS",
   "name": "John Knoll, Dennis Muren, Scott Squires, Rob Coleman",
-  "film": "Star Wars Episode I: The Phantom Menace",
+  "film": "Star Wars: Episode I - The Phantom Menace",
   "winner": "False"
  },
  {
@@ -74818,7 +74818,7 @@
   "ceremony": "75",
   "category": "VISUAL EFFECTS",
   "name": "Rob Coleman, Pablo Helman, John Knoll, Ben Snow",
-  "film": "Star Wars Episode II Attack of the Clones",
+  "film": "Star Wars: Episode II - Attack of the Clones",
   "winner": "False"
  },
  {
@@ -77524,7 +77524,7 @@
   "ceremony": "78",
   "category": "MAKEUP",
   "name": "Dave Elsey and Nikki Gooley",
-  "film": "Star Wars: Episode III Revenge of the Sith",
+  "film": "Star Wars: Episode III - Revenge of the Sith",
   "winner": "False"
  },
  {
@@ -88205,7 +88205,7 @@
   "ceremony": "88",
   "category": "FILM EDITING",
   "name": "Maryann Brandon and Mary Jo Markey",
-  "film": "Star Wars: The Force Awakens",
+  "film": "Star Wars: Episode VII - The Force Awakens",
   "winner": "False"
  },
  {
@@ -88322,7 +88322,7 @@
   "ceremony": "88",
   "category": "MUSIC (Original Score)",
   "name": "John Williams",
-  "film": "Star Wars: The Force Awakens",
+  "film": "Star Wars: Episode VII - The Force Awakens",
   "winner": "False"
  },
  {
@@ -88619,7 +88619,7 @@
   "ceremony": "88",
   "category": "SOUND EDITING",
   "name": "Matthew Wood and David Acord",
-  "film": "Star Wars: The Force Awakens",
+  "film": "Star Wars: Episode VII - The Force Awakens",
   "winner": "False"
  },
  {
@@ -88664,7 +88664,7 @@
   "ceremony": "88",
   "category": "SOUND MIXING",
   "name": "Andy Nelson, Christopher Scarabosio and Stuart Wilson",
-  "film": "Star Wars: The Force Awakens",
+  "film": "Star Wars: Episode VII - The Force Awakens",
   "winner": "False"
  },
  {
@@ -88709,7 +88709,7 @@
   "ceremony": "88",
   "category": "VISUAL EFFECTS",
   "name": "Roger Guyett, Patrick Tubach, Neal Scanlan and Chris Corbould",
-  "film": "Star Wars: The Force Awakens",
+  "film": "Star Wars: Episode VII - The Force Awakens",
   "winner": "False"
  },
  {
@@ -90557,7 +90557,7 @@
   "ceremony": "90",
   "category": "MUSIC (Original Score)",
   "name": "John Williams",
-  "film": "Star Wars: The Last Jedi",
+  "film": "Star Wars: Episode VIII - The Last Jedi",
   "winner": "False"
  },
  {
@@ -90872,7 +90872,7 @@
   "ceremony": "90",
   "category": "SOUND EDITING",
   "name": "Matthew Wood and Ren Klyce",
-  "film": "Star Wars: The Last Jedi",
+  "film": "Star Wars: Episode VIII - The Last Jedi",
   "winner": "False"
  },
  {
@@ -90917,7 +90917,7 @@
   "ceremony": "90",
   "category": "SOUND MIXING",
   "name": "David Parker, Michael Semanick, Ren Klyce and Stuart Wilson",
-  "film": "Star Wars: The Last Jedi",
+  "film": "Star Wars: Episode VIII - The Last Jedi",
   "winner": "False"
  },
  {
@@ -90953,7 +90953,7 @@
   "ceremony": "90",
   "category": "VISUAL EFFECTS",
   "name": "Ben Morris, Mike Mulholland, Neal Scanlan and Chris Corbould",
-  "film": "Star Wars: The Last Jedi",
+  "film": "Star Wars: Episode VIII - The Last Jedi",
   "winner": "False"
  },
  {
@@ -93240,7 +93240,7 @@
   "ceremony": "92",
   "category": "VISUAL EFFECTS",
   "name": "Roger Guyett, Neal Scanlan, Patrick Tubach and Dominic Tuohy",
-  "film": "Star Wars: The Rise of Skywalker",
+  "film": "Star Wars: Episode IX - The Rise of Skywalker",
   "winner": "False"
  },
  {
