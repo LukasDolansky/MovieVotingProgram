@@ -71,6 +71,7 @@ async function getInformation() {
 
 			var movTitle = movieData[index].title;
 			var rating = "TMDB Rating: " + movieData[index].rating + " / 10";
+			var nominationCat = "Nominated for: " + movieData[index].category;
 			var winResult = "Won Award: ";
 			var movDesc = movieData[index].description;
 			var movLink = movieData[index].imdbLink;
@@ -110,7 +111,7 @@ async function getInformation() {
 
 			//insert data into html elements
 			title.textContent = movTitle;
-			rating_winner.textContent = rating + " | " + winResult;
+			rating_winner.textContent = rating + " | " + nominationCat + " | " + winResult;
 			poster.setAttribute('src', posterURL);
 			poster.setAttribute('height', 370);
 			poster.setAttribute('width', 250);
@@ -121,7 +122,6 @@ async function getInformation() {
 			posterContainer.appendChild(poster);
 			movieContainer.appendChild(posterContainer);
 			movieContainer.appendChild(rating_winner);
-			movieContainer.appendChild(document.createElement('br'));
 			movieContainer.appendChild(description);
 			movieContainer.appendChild(document.createElement('br'));
 
