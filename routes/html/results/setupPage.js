@@ -33,7 +33,10 @@ async function getInformation() {
 	}
 	movieListContainer = document.createElement('div');
 	movieListContainer.setAttribute("class", "movie-data");
+
 	document.getElementsByTagName('body')[0].appendChild(movieListContainer);
+
+	
 
 	var movieData = await getData(category, year, winner);
 	//This while loop goes through the api data and put them in html elements
@@ -42,35 +45,56 @@ async function getInformation() {
 	while (k <= Object.keys(movieData).length) {
 		console.log(movieData[k] != undefined);
 		if (movieData[index] != undefined) {
-			var title = document.createElement('h2');
-			title.setAttribute("id", "title");
+
+			var movTitle = movieData[index].title;
+			var movDesc = movieData[index].description;
+			var movLink = movieData[index].imdbLink;
+			var posterURL = movieData[index].posterURL;
+
+			movieContainer = document.createElement('div');
+			movieListContainer.appendChild(movieContainer);
+			movieContainer.setAttribute("class", "movie_container");
+			movieContainer.setAttribute("id", movTitle+"_Container");
+
+			posterContainer = document.createElement('div');
+			posterContainer.setAttribute("class", "poster_container");
+			posterContainer.setAttribute("id", movTitle+"_Poster_Container");
+			posterContainer.setAttribute('height', 370);
+			posterContainer.setAttribute('width', 250);
+
+			var title = document.createElement('h1');
+			title.setAttribute("class", "title");
+			title.setAttribute("id", movTitle+" _Title");
 			var poster = document.createElement('img');
-			poster.setAttribute("id", "poster");
-			var movieLink = document.createElement('a');
-			var description = document.createElement('p');
-			description.setAttribute("id", "description");
+			poster.setAttribute("class", "poster_img");
+			poster.setAttribute("id", movTitle +"_Poster");
+	
+			var description = document.createElement('h4');
+			description.setAttribute("class", "description");
+			description.setAttribute("id", movTitle+"_Description");
 
 			//insert data into html elements
 			title.textContent = movieData[index].title;
-			poster.setAttribute('src', movieData[index].posterURL);
+			poster.setAttribute('src', posterURL);
 			poster.setAttribute('height', 370);
 			poster.setAttribute('width', 250);
-			imdbLink = movieData[index].imdbLink;
-			poster.setAttribute("href", imdbLink);
-			title.setAttribute('href', imdbLink);
-			movieLink.textContent = movieData[index].imdbLink;
-			movieLink.setAttribute('href', movieData[index].imdbLink)
 			description.textContent = movieData[index].description;
 
 
 
-			movieListContainer.appendChild(title);
-			movieListContainer.appendChild(poster);
-			movieListContainer.appendChild(document.createElement('br'));
-			movieListContainer.appendChild(movieLink);
-			movieListContainer.appendChild(document.createElement('br'));
-			movieListContainer.appendChild(description);
-			movieListContainer.appendChild(document.createElement('br'));
+			movieContainer.appendChild(title);
+			posterContainer.appendChild(poster);
+			movieContainer.appendChild(posterContainer);
+			movieContainer.appendChild(document.createElement('br'));
+			movieContainer.appendChild(description);
+			movieContainer.appendChild(document.createElement('br'));
+
+			var posterElement = document.getElementById(movTitle+"_Poster").parentElement;
+			var imgEl = posterElement.innerHTML;
+			console.log(posterElement.innerHTML);
+			posterElement.innerHTML = "<a href='"+ movLink + "'>" + imgEl + "</a'";
+			console.log(imgEl);
+			console.log(posterElement.innerHTML);
 			k++;
 		}
 		index = index + 1;

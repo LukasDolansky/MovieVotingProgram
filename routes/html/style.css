@@ -83,21 +83,34 @@ hr {
   100% { transform: rotate(360deg); }
 }
 
-#poster {
+.poster_img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position:relative;
+  height: 370px;
+  width: 250px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-position: center;
+  background-color: #4D4E56;
 }
 
-#description {
+.description {
   text-align: center;
 }
 
-#title {
+.title {
   text-align: center;
 }
 
 #category-header {
   display: block;
   text-align: center;
+}
+
+.movie_container {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
