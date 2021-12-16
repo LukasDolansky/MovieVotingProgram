@@ -12,7 +12,7 @@ function setTitle() {
 	var urlSearchParams = new URLSearchParams(window.location.search);
 	var category = urlSearchParams.get('category');
 	var webHeader = document.createElement('h1');
-	webHeader.setAttribute("id", "Xnavbar-logo");
+	webHeader.setAttribute("id", "category-header");
 	webHeader.textContent = category;
 	document.getElementsByTagName('body')[0].appendChild(webHeader);
 }

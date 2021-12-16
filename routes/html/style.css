@@ -70,8 +70,8 @@ hr {
   left: 50%;
   top: 50%;
   z-index: 1;
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #ce8526e8; /* Blue */
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #ce8526e8;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -94,5 +94,10 @@ hr {
 }
 
 #title {
+  text-align: center;
+}
+
+#category-header {
+  display: block;
   text-align: center;
 }
