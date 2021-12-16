@@ -31,6 +31,7 @@
   padding: 0 50px;
   max-width: 1720px;
   background-color: black;
+  justify-content: center;
 }
 
 #navbar__logo {
@@ -48,15 +49,13 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  text-align: center;
 }
 
 .navbar__logo {
   cursor: pointer;
-}
-
-.dropdown {
-  width: 50%;
-  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
 }
 
 hr {

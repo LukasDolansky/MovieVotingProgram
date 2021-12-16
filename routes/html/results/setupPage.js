@@ -12,6 +12,7 @@ function setTitle() {
 	var urlSearchParams = new URLSearchParams(window.location.search);
 	var category = urlSearchParams.get('category');
 	var webHeader = document.createElement('h1');
+	webHeader.setAttribute("id", "Xnavbar-logo");
 	webHeader.textContent = category;
 	document.getElementsByTagName('body')[0].appendChild(webHeader);
 }
@@ -54,6 +55,9 @@ async function getInformation() {
 			poster.setAttribute('src', movieData[index].posterURL);
 			poster.setAttribute('height', 370);
 			poster.setAttribute('width', 250);
+			imdbLink = movieData[index].imdbLink;
+			poster.setAttribute("href", imdbLink);
+			title.setAttribute('href', imdbLink);
 			movieLink.textContent = movieData[index].imdbLink;
 			movieLink.setAttribute('href', movieData[index].imdbLink)
 			description.textContent = movieData[index].description;
