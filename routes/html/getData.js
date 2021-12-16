@@ -1,3 +1,4 @@
+//This script populates the dropdown lists with valid entries
 async function populateLists() {
     var oscarData = {};
     var categories = [];

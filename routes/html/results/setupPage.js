@@ -11,10 +11,30 @@ function setupWebPage() {
 function setTitle() {
 	var urlSearchParams = new URLSearchParams(window.location.search);
 	var category = urlSearchParams.get('category');
+	year = urlSearchParams.get('year');
 	var webHeader = document.createElement('h1');
 	var hr = document.createElement('hr');
 	webHeader.setAttribute("id", "category-header");
-	webHeader.textContent = category;
+
+	//I'm sorry for this
+	if (urlSearchParams.get('winner') != null) {
+		if(urlSearchParams.get('category') == null) {
+		webHeader.textContent = "WINNERS - " + year;
+		} else if (urlSearchParams.get("year") == null) {
+			webHeader.textContent = category + " WINNERS";
+		} else {
+			webHeader.textContent = category + " WINNER - " + year;
+		}
+	} else {
+		if(urlSearchParams.get('category') == null) {
+		webHeader.textContent = "NOMINATED MOVIES - " + year;
+		} else if (urlSearchParams.get("year") == null) {
+			webHeader.textContent = "ALL " + category + " NOMINEES";
+		} else {
+			webHeader.textContent = category + " - " + year;
+		}
+	}
+	
 	document.getElementsByTagName('body')[0].appendChild(webHeader);
 	document.getElementsByTagName('body')[0].appendChild(hr);
 }
@@ -32,6 +52,7 @@ async function getInformation() {
 	}
 	if (urlSearchParams.get('winner') != null) {
 		winner = urlSearchParams.get('winner');
+
 	}
 	movieListContainer = document.createElement('div');
 	movieListContainer.setAttribute("class", "movie-data");

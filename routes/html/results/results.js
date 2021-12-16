@@ -4,9 +4,9 @@
 const express = require('express');
 var fetch = require('node-fetch');
 const index = require('../index');
-var URL = require('url');
-const { nextTick } = require('process');
 const results = express.Router({mergeParams : true});        //mergeParams lets chained router calls maintain their parameters and queries
+
+
 
 results.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/results.html');
