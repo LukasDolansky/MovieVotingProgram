@@ -37,19 +37,17 @@ async function getList(req, res, next) {
     console.log("Getting data for movies:");
     //Comb through oscar_data until something matches URL criteria
     for(var i = (oscarData.length - 1); i >= 0 ; i--) {
-      var movie = oscarData[i];     //Helps readability
+      var movie = oscarData[i];     
       if((category == undefined || movie.category == category) && 
         (year == undefined || movie.year_film == year) && 
         (isWinner == undefined || movie.winner == isWinner)) {    
 
         var title = movie.film;                                           //You don't need to format the ID as a string even though that's what it is in the json!
-        //var description = '';
         var imdbLink = "https://www.imdb.com/title/";
         var releaseYear = movie.year_film;
         var ceremonyYear = movie.year_ceremony;              
-        //var awardCategory = movie.category;
-        //var awardWinner = movie.winner;
         var posterURL = 'https://image.tmdb.org/t/p/w500/';
+
         //Get IMDB ID
         var IMDB_ID = await getIMDB_ID(title, releaseYear, ceremonyYear);
         if(IMDB_ID == undefined) {                                            //Handle awards not associated with movie
@@ -86,7 +84,7 @@ async function getList(req, res, next) {
 
 //TODO: Uses OMDB API to get IMDB ID 
 async function getIMDB_ID(movieName, movieReleaseYear, movieCeremonyYear) {
-  const apiKey = "1f6dc1cf&t";
+  const apiKey = "59174cfa";
   const apiBase = "https://www.omdbapi.com/?apikey=" + apiKey;
   //Inputs
   var movie = "&t=" + movieName;
